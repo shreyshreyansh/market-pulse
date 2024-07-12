@@ -1,0 +1,51 @@
+.centered-table {
+  width: 100%;
+  margin: 0 auto; /* Center the table horizontally */
+}
+
+.price-table-container {
+  max-width: var(--max-width); /* Ensure it respects your max-width variable */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px; /* Adjust padding as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+}
+
+.price-table-container h1 {
+  margin-bottom: 20px; /* Adjust the gap between h1 and table */
+}
+
+.price-table {
+  width: 100%;
+  text-align: center; /* Center text horizontally in table cells */
+  border-collapse: collapse; /* Collapse borders between cells */
+}
+
+.price-table th,
+.price-table td {
+  padding: 12px; /* Adjust padding as needed */
+  border: 1px solid #ccc; /* Example border styling */
+}
+
+.change-symbol-button {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding inside button */
+  text-align: center; /* Center text horizontally */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Display as inline-block */
+  font-size: 16px; /* Font size */
+  margin-bottom: 10px; /* Adjust button spacing */
+  cursor: pointer; /* Cursor pointer on hover */
+  border-radius: 4px; /* Rounded corners */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.change-symbol-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
