@@ -3,10 +3,9 @@ import Price from '../models/price.model';
 import dotenv from 'dotenv';
 import { IPrice } from '../interfaces/price.interface';
 import { IPriceResponse } from '../interfaces/price-response.interface';
+import { SYMBOLS } from '../constants/symbols.constant';
 
 dotenv.config();
-
-const symbols = ['GOOG', 'META'];
 
 async function fetchPrices(): Promise<IPriceResponse> {
   /**
@@ -14,7 +13,7 @@ async function fetchPrices(): Promise<IPriceResponse> {
    * API doc: https://twelvedata.com/docs
    */
   const response = await axios.get<IPriceResponse>(
-    `https://api.twelvedata.com/price?symbol=${symbols.join()}&apikey=${
+    `https://api.twelvedata.com/price?symbol=${SYMBOLS.join()}&apikey=${
       process.env.TWELVE_DATA_API_KEY
     }`
   );
@@ -22,6 +21,7 @@ async function fetchPrices(): Promise<IPriceResponse> {
 }
 
 async function pollPrices() {
+  console.log('Polling prices at:', new Date().toISOString());
   try {
     const prices = await fetchPrices();
     const stockKeys = Object.keys(prices);
@@ -45,6 +45,7 @@ async function pollPrices() {
   } catch (error) {
     console.error('Error polling prices:', error);
   }
+  console.log('Finished polling prices at:', new Date().toISOString());
 }
 
 async function fetchPriceBySymbol(symbol: string): Promise<IPrice[]> {
